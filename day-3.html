@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Day 3 — HELMo Hackathon | International Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f5f2ed; --card: #fff; --text: #1a1a18; --muted: #6b6860;
+      --accent: #c8502a; --accent2: #2a5ca8; --border: rgba(0,0,0,0.10); --radius: 12px;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(245,242,237,0.92); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 60px;
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.15rem; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .article-wrap { max-width: 720px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--muted); text-decoration: none; margin-bottom: 2.5rem; font-weight: 500; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+    .entry-meta { display: flex; align-items: center; gap: 0.75rem; font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+    .entry-meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.2; margin-bottom: 0.75rem; }
+    h1 em { font-style: italic; color: var(--accent); }
+    .lead { font-size: 1.1rem; color: var(--muted); border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0 2.5rem; line-height: 1.6; }
+    .photo-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 0.75rem; margin: 2.5rem 0; border-radius: var(--radius); overflow: hidden; }
+    .ph-main, .ph-side { background: linear-gradient(135deg, #e8e3db, #d4cfc7); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--muted); font-size: 0.8rem; gap: 0.4rem; padding: 1rem; }
+    .ph-main { min-height: 260px; border-radius: var(--radius); }
+    .ph-right { display: flex; flex-direction: column; gap: 0.75rem; }
+    .ph-side { min-height: 120px; border-radius: var(--radius); }
+    .ph-main span, .ph-side span { font-size: 1.5rem; }
+    .ph-main img, .ph-side img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: var(--radius); }
+    .timeline { margin: 2.5rem 0; }
+    .tl-item { display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding-bottom: 1.75rem; position: relative; }
+    .tl-item:not(:last-child)::after { content: ''; position: absolute; left: 39px; top: 28px; bottom: 0; width: 1px; background: var(--border); }
+    .tl-time { font-size: 0.8rem; font-weight: 500; color: var(--accent); padding-top: 2px; text-align: right; line-height: 1.4; }
+    .tl-body h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .tl-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 3rem; }
+    .tag { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--muted); }
+    footer { border-top: 1px solid var(--border); text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--muted); }
+    @media (max-width: 600px) { .photo-grid { grid-template-columns: 1fr; } .ph-right { flex-direction: row; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../index.html">International Project</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#entries">Journal</a></li>
+    <li><a href="../index.html#team">Team</a></li>
+  </ul>
+</nav>
+
+<div class="article-wrap">
+
+  <a class="back-link" href="../index.html">← Back to journal</a>
+
+  <div class="entry-meta">
+    <span class="dot"></span>
+    <span>Your name</span>
+    <span>·</span>
+    <span>20 April 2026</span>
+    <span>·</span>
+    <span>Day 3</span>
+  </div>
+
+  <h1>Day 3 — <em>Your title goes here</em></h1>
+
+  <p class="lead">
+    Write a one or two sentence summary of the day here — the mood, the main challenge, what made it memorable.
+  </p>
+
+  <!-- PHOTO GRID — replace placeholders with your actual images -->
+  <div class="photo-grid">
+    <div class="ph-main">
+      <!-- <img src="../photos/dayN-main.jpg" alt="Description"> -->
+      <span>📷</span>
+      Main photo
+    </div>
+    <div class="ph-right">
+      <div class="ph-side">
+        <!-- <img src="../photos/dayN-b.jpg" alt="Description"> -->
+        <span>📷</span>
+        Photo 2
+      </div>
+      <div class="ph-side">
+        <!-- <img src="../photos/dayN-c.jpg" alt="Description"> -->
+        <span>📷</span>
+        Photo 3
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE — add or remove tl-item blocks as needed -->
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-time">00:00</div>
+      <div class="tl-body">
+        <h3>Event title</h3>
+        <p>Describe what happened at this point in the day. Add as much or as little detail as you like.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">00:00</div>
+      <div class="tl-body">
+        <h3>Event title</h3>
+        <p>Describe what happened at this point in the day.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">00:00</div>
+      <div class="tl-body">
+        <h3>Event title</h3>
+        <p>Describe what happened at this point in the day.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">00:00</div>
+      <div class="tl-body">
+        <h3>Event title</h3>
+        <p>Describe what happened at this point in the day.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TAGS — edit to match the topics of the day -->
+  <div class="tag-row">
+    <span class="tag">Day 3</span>
+    <span class="tag">Liège</span>
+    <span class="tag">HELMo</span>
+    <span class="tag">Tag 4</span>
+    <span class="tag">Tag 5</span>
+  </div>
+
+</div>
+
+<footer>
+  <p>International Project · Howest × HELMo · Made with ❤️ · Hosted on GitHub Pages</p>
+</footer>
+
+</body>
+</html>
