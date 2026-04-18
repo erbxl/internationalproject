@@ -32,13 +32,12 @@
     h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.2; margin-bottom: 0.75rem; }
     h1 em { font-style: italic; color: var(--accent); }
     .lead { font-size: 1.1rem; color: var(--muted); border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0 2.5rem; line-height: 1.6; }
-    .photo-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 0.75rem; margin: 2.5rem 0; border-radius: var(--radius); overflow: hidden; }
-    .ph-main, .ph-side { background: linear-gradient(135deg, #e8e3db, #d4cfc7); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--muted); font-size: 0.8rem; gap: 0.4rem; padding: 1rem; }
-    .ph-main { min-height: 260px; border-radius: var(--radius); }
+    .photo-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 0.75rem; margin: 2.5rem 0; }
+    .ph-main { border-radius: var(--radius); overflow: hidden; min-height: 260px; background: #e8e3db; }
+    .ph-main img { width: 100%; height: 260px; object-fit: cover; display: block; }
     .ph-right { display: flex; flex-direction: column; gap: 0.75rem; }
-    .ph-side { min-height: 120px; border-radius: var(--radius); }
-    .ph-main span, .ph-side span { font-size: 1.5rem; }
-    .ph-main img, .ph-side img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: var(--radius); }
+    .ph-side { border-radius: var(--radius); overflow: hidden; min-height: 120px; background: #e8e3db; }
+    .ph-side img { width: 100%; height: 120px; object-fit: cover; display: block; }
     .timeline { margin: 2.5rem 0; }
     .tl-item { display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding-bottom: 1.75rem; position: relative; }
     .tl-item:not(:last-child)::after { content: ''; position: absolute; left: 39px; top: 28px; bottom: 0; width: 1px; background: var(--border); }
@@ -54,10 +53,10 @@
 <body>
 
 <nav>
-  <a class="nav-logo" href="../index.html">International Project</a>
+  <a class="nav-logo" href="index.html">International Project</a>
   <ul class="nav-links">
-    <li><a href="../index.html#entries">Journal</a></li>
-    <li><a href="../index.html#team">Team</a></li>
+    <li><a href="index.html#entries">Journal</a></li>
+    <li><a href="index.html#team">Team</a></li>
   </ul>
 </nav>
 
@@ -67,33 +66,31 @@
 
   <div class="entry-meta">
     <span class="dot"></span>
-    <span>18 April 2026</span>
+    <span>19 April 2026</span>
     <span>·</span>
     <span>Day 2</span>
   </div>
 
-  <h1>Day 2 <em>&amp; hard work and fun</em></h1>
+  <h1>Day 2 — <em>hard work and fun</em></h1>
 
   <p class="lead">
-    A busy and energetic second day, from a late breakfast of waffles to a fooseball battle and crossfit session at dusk, with hours of focused hackathon work in between.
+    A busy and energetic second day, from a late breakfast of waffles to a foosball battle and crossfit session at dusk, with hours of focused hackathon work in between.
   </p>
 
-  <!-- PHOTO GRID — replace placeholders with your actual images -->
   <div class="photo-grid">
     <div class="ph-main">
-      <img src="../photos\IMG_4796.JPG" alt="Station">
+      <img src="photos/IMG_4796.JPG" alt="Station">
     </div>
     <div class="ph-right">
       <div class="ph-side">
-        <img src="../photos\IMG_6717.JPG" alt="Foosball">
+        <img src="photos/IMG_6717.JPG" alt="Foosball">
       </div>
       <div class="ph-side">
-        <img src="../photos\IMG_6729.jpg" alt="Crossfit">
+        <img src="photos/IMG_6729.jpg" alt="Crossfit">
       </div>
     </div>
   </div>
 
-  <!-- TIMELINE -->
   <div class="timeline">
 
     <div class="tl-item">
@@ -115,7 +112,7 @@
     <div class="tl-item">
       <div class="tl-time">12:00</div>
       <div class="tl-body">
-        <h3>Lunch pasta, chicken & more coffee</h3>
+        <h3>Lunch — pasta, chicken & more coffee</h3>
         <p>We kept pushing forward on the solution through the morning, doing our best to stay focused even as the catering team set up the lunch table right beside us. Eventually we were called over — pasta with chicken, followed by, of course, more coffee.</p>
       </div>
     </div>
@@ -140,7 +137,7 @@
       <div class="tl-time">16:00</div>
       <div class="tl-body">
         <h3>Crossfit session</h3>
-        <p>The organisers had planned a crossfit session and we had been told in advance to bring sports clothes. It was a simple but fun activity, even if some of the instructions were hard to follow at times, especially with the French explanations. But here comes the twist, typical Belgium rain decided to rain during our session. However the session did help us reset, stretch out, and feel energised before returning to the challenge.</p>
+        <p>The organisers had planned a crossfit session and we had been told in advance to bring sports clothes. It was a simple but fun activity, even if some of the instructions were hard to follow at times — especially with the French explanations. Typical Belgian rain decided to join us mid-session, but it only added to the experience. The session helped us reset, stretch out, and feel re-energised before returning to the challenge.</p>
       </div>
     </div>
 
@@ -156,13 +153,12 @@
       <div class="tl-time">19:30</div>
       <div class="tl-body">
         <h3>Dinner & train home</h3>
-        <p>We ended the day with dinner around 7:30 p.m. and then headed home by train. The journey back was peaceful, most of us fell asleep almost immediately after a long and busy day.</p>
+        <p>We ended the day with dinner and then headed home by train. The journey back was peaceful — most of us fell asleep almost immediately after a long and busy day.</p>
       </div>
     </div>
 
   </div>
 
-  <!-- TAGS -->
   <div class="tag-row">
     <span class="tag">Day 2</span>
     <span class="tag">Liège</span>
@@ -175,7 +171,7 @@
 </div>
 
 <footer>
-  <p>International Project · Howest × HELMos</p>
+  <p>International Project · Howest × HELMo · Made with ❤️ · Hosted on GitHub Pages</p>
 </footer>
 
 </body>
