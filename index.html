@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our International Project — Howest × HELMo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f2ed;
+      --card: #fff;
+      --text: #1a1a18;
+      --muted: #6b6860;
+      --accent: #c8502a;
+      --accent2: #2a5ca8;
+      --border: rgba(0,0,0,0.10);
+      --radius: 12px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(245,242,237,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 60px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700; font-size: 1.15rem;
+      color: var(--text); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.875rem; font-weight: 500;
+      color: var(--muted); text-decoration: none;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      max-width: 860px; margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    }
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      line-height: 1.15; margin-bottom: 1rem;
+    }
+    .hero-text h1 em { font-style: italic; color: var(--accent); }
+    .hero-text p { color: var(--muted); font-size: 1.05rem; margin-bottom: 1.5rem; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em;
+      text-transform: uppercase; padding: 4px 12px;
+      border-radius: 999px; border: 1px solid var(--border);
+      background: var(--card); color: var(--muted);
+    }
+    .hero-img {
+      aspect-ratio: 4/3; border-radius: var(--radius);
+      overflow: hidden; background: #ddd;
+    }
+    .hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-img .placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #e8e3db 0%, #d4cfc7 100%);
+      color: var(--muted); font-size: 0.875rem; gap: 0.5rem;
+    }
+    .hero-img .placeholder span { font-size: 2rem; }
+
+    /* SECTION TITLE */
+    .section-header {
+      max-width: 860px; margin: 0 auto;
+      padding: 3rem 2rem 1.5rem;
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-top: 1px solid var(--border);
+    }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+    }
+    .section-header a {
+      font-size: 0.875rem; color: var(--accent); text-decoration: none; font-weight: 500;
+    }
+
+    /* BLOG GRID */
+    .blog-grid {
+      max-width: 860px; margin: 0 auto;
+      padding: 0 2rem 4rem;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .post-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      text-decoration: none; color: inherit;
+      display: block;
+    }
+    .post-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+    .post-img {
+      aspect-ratio: 16/9; overflow: hidden;
+      background: #e5e1db;
+    }
+    .post-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .post-card:hover .post-img img { transform: scale(1.04); }
+    .post-img .ph {
+      width: 100%; height: 100%; min-height: 150px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #ede9e3, #d8d3cb);
+      color: var(--muted); font-size: 0.8rem;
+    }
+    .post-body { padding: 1.25rem; }
+    .post-meta {
+      font-size: 0.75rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .post-meta .author-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block;
+    }
+    .post-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+    .post-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+    /* TEAM */
+    .team-grid {
+      max-width: 860px; margin: 0 auto;
+      padding: 0 2rem 5rem;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+    .team-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
+    .avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--accent2); color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 0.75rem;
+    }
+    .team-card h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .team-card p { font-size: 0.8rem; color: var(--muted); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center; padding: 2rem;
+      font-size: 0.8rem; color: var(--muted);
+    }
+
+    @media (max-width: 640px) {
+      .hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 3rem; }
+      .hero-img { order: -1; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">International Project</a>
+  <ul class="nav-links">
+    <li><a href="#entries">Journal</a></li>
+    <li><a href="#team">Team</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Our journey <em>in pictures</em> and words</h1>
+    <p>We document our day-to-day experience at the HELMo Hackathon in Liège — what we learn, what we live, and what surprises us along the way.</p>
+    <div class="tag-list">
+      <span class="tag">Howest</span>
+      <span class="tag">HELMo Hackathon</span>
+      <span class="tag">Liège 2026</span>
+    </div>
+  </div>
+  <div class="hero-img">
+    <!-- Replace src with your cover photo -->
+    <!-- <img src="photos/cover.jpg" alt="Team photo"> -->
+    <div class="placeholder">
+      <span>📷</span>
+      Add your cover photo here
+    </div>
+  </div>
+</section>
+
+<!-- BLOG ENTRIES -->
+<div class="section-header" id="entries">
+  <h2>Latest entries</h2>
+  <a href="#">View all →</a>
+</div>
+
+<div class="blog-grid">
+
+  <!-- ENTRY 1 — duplicate this block to add more entries -->
+  <a class="post-card" href="entries/day-1.html">
+    <div class="post-img">
+      <!-- <img src="photos/day1.jpg" alt="Day 1 — Arrival in Liège"> -->
+      <div class="ph">Add a photo</div>
+    </div>
+    <div class="post-body">
+      <div class="post-meta">
+        <span class="author-dot"></span>
+        <span>Your name · 18 Apr 2026</span>
+      </div>
+      <h3>Day 1 — Arrival, opening ceremony & first team meeting</h3>
+      <p>We departed Bruges at 14:58 by train and arrived in Liège just before the 18:00 opening ceremony. After exploring the city and the HELMo campus, we attended the presentations from participating companies — including Siemens — formed our team, took part in a blindfolded rope challenge, and held our first strategy session before heading back to Bruges.</p>
+    </div>
+  </a>
+
+  <!-- ENTRY 2 -->
+  <a class="post-card" href="entries/day-2.html">
+    <div class="post-img">
+      <div class="ph">Add a photo</div>
+    </div>
+    <div class="post-body">
+      <div class="post-meta">
+        <span class="author-dot"></span>
+        <span>Teammate · 19 Apr 2026</span>
+      </div>
+      <h3>Day 2 — Deep work & challenge development</h3>
+      <p>Brief summary of the second day. Add the highlights of what your team worked on and any breakthroughs you had.</p>
+    </div>
+  </a>
+
+  <!-- ENTRY 3 -->
+  <a class="post-card" href="entries/day-3.html">
+    <div class="post-img">
+      <div class="ph">Add a photo</div>
+    </div>
+    <div class="post-body">
+      <div class="post-meta">
+        <span class="author-dot"></span>
+        <span>Teammate · 20 Apr 2026</span>
+      </div>
+      <h3>Day 3 — Final presentation & wrap-up</h3>
+      <p>Summary of the final day. Add a photo and edit this text freely to describe how the hackathon concluded.</p>
+    </div>
+  </a>
+
+</div>
+
+<!-- TEAM -->
+<div class="section-header" id="team">
+  <h2>The team</h2>
+</div>
+
+<div class="team-grid">
+  <!-- Change the initials, name and role for each team member -->
+  <div class="team-card">
+    <div class="avatar">YN</div>
+    <h4>Your Name</h4>
+    <p>Your role in the project</p>
+  </div>
+  <div class="team-card">
+    <div class="avatar" style="background: #c8502a;">T2</div>
+    <h4>Teammate 2</h4>
+    <p>Their role in the project</p>
+  </div>
+  <div class="team-card">
+    <div class="avatar" style="background: #2a8a5c;">T3</div>
+    <h4>Teammate 3</h4>
+    <p>Their role in the project</p>
+  </div>
+</div>
+
+<footer>
+  <p>International Project · Howest × HELMo · Made with ❤️ · Hosted on GitHub Pages</p>
+</footer>
+
+</body>
+</html>

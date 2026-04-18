@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Day 1 — HELMo Hackathon | International Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f2ed;
+      --card: #fff;
+      --text: #1a1a18;
+      --muted: #6b6860;
+      --accent: #c8502a;
+      --accent2: #2a5ca8;
+      --border: rgba(0,0,0,0.10);
+      --radius: 12px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(245,242,237,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 60px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700; font-size: 1.15rem;
+      color: var(--text); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.875rem; font-weight: 500;
+      color: var(--muted); text-decoration: none;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .article-wrap {
+      max-width: 720px; margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.85rem; color: var(--muted); text-decoration: none;
+      margin-bottom: 2.5rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .entry-meta {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.8rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    .entry-meta .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); display: inline-block;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.2; margin-bottom: 0.75rem;
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+
+    .lead {
+      font-size: 1.1rem; color: var(--muted);
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem; margin: 1.5rem 0 2.5rem;
+      line-height: 1.6;
+    }
+
+    /* PHOTO GRID */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 0.75rem;
+      margin: 2.5rem 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .photo-grid .ph-main,
+    .photo-grid .ph-side {
+      background: linear-gradient(135deg, #e8e3db, #d4cfc7);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: var(--muted); font-size: 0.8rem; gap: 0.4rem;
+      padding: 1rem;
+    }
+    .photo-grid .ph-main { min-height: 260px; }
+    .photo-grid .ph-right { display: flex; flex-direction: column; gap: 0.75rem; }
+    .photo-grid .ph-side { min-height: 120px; border-radius: var(--radius); }
+    .photo-grid .ph-main { border-radius: var(--radius); }
+    .photo-grid span { font-size: 1.5rem; }
+    .photo-grid img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: var(--radius); }
+
+    /* TIMELINE */
+    .timeline { margin: 2.5rem 0; }
+    .tl-item {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 1rem; padding-bottom: 1.75rem;
+      position: relative;
+    }
+    .tl-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 39px; top: 28px; bottom: 0;
+      width: 1px; background: var(--border);
+    }
+    .tl-time {
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--accent); padding-top: 2px;
+      text-align: right; line-height: 1.4;
+    }
+    .tl-body h3 {
+      font-size: 1rem; font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+    .tl-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+    /* BODY TEXT */
+    .entry-body { font-size: 1rem; line-height: 1.8; }
+    .entry-body p { margin-bottom: 1.25rem; }
+    .entry-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; margin: 2rem 0 0.75rem;
+    }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 3rem; }
+    .tag {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em;
+      text-transform: uppercase; padding: 4px 12px;
+      border-radius: 999px; border: 1px solid var(--border);
+      background: var(--card); color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center; padding: 2rem;
+      font-size: 0.8rem; color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      .photo-grid { grid-template-columns: 1fr; }
+      .photo-grid .ph-right { flex-direction: row; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">International Project</a>
+  <ul class="nav-links">
+    <li><a href="index.html#entries">Journal</a></li>
+    <li><a href="index.html#team">Team</a></li>
+  </ul>
+</nav>
+
+<div class="article-wrap">
+
+  <a class="back-link" href="index.html">← Back to journal</a>
+
+  <div class="entry-meta">
+    <span class="dot"></span>
+    <span>Your name</span>
+    <span>·</span>
+    <span>18 April 2026</span>
+    <span>·</span>
+    <span>Day 1</span>
+  </div>
+
+  <h1>Arrival, opening ceremony <em>&amp; first team meeting</em></h1>
+
+  <p class="lead">
+    A long but rewarding first day — from Bruges to Liège, through a city we barely knew, and into a hackathon that would challenge us in every possible way.
+  </p>
+
+  <!-- PHOTO GRID — replace placeholders with your actual images -->
+  <div class="photo-grid">
+    <div class="ph-main">
+      <!-- <img src="photos/day1-main.jpg" alt="HELMo campus"> -->
+      <span>📷</span>
+      Main photo (e.g. campus or opening ceremony)
+    </div>
+    <div class="ph-right">
+      <div class="ph-side">
+        <!-- <img src="photos/day1-b.jpg" alt="Liège city"> -->
+        <span>📷</span>
+        City walk
+      </div>
+      <div class="ph-side">
+        <!-- <img src="photos/day1-c.jpg" alt="Team activity"> -->
+        <span>📷</span>
+        Team activity
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-time">14:58</div>
+      <div class="tl-body">
+        <h3>Departure from Bruges</h3>
+        <p>We boarded the train at Bruges station, heading east towards Liège. The journey gave us time to review the hackathon briefing materials and mentally prepare for the days ahead.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">17:01</div>
+      <div class="tl-body">
+        <h3>Arrival in Liège</h3>
+        <p>We arrived in Liège with just under an hour to spare before the opening ceremony. The weather was pleasant and the city felt remarkably green as we made our way on foot towards the HELMo campus.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">17:15</div>
+      <div class="tl-body">
+        <h3>Exploring the city & campus</h3>
+        <p>Arriving well ahead of schedule, we took the opportunity to walk around the city centre and explore the HELMo campus. The surroundings made a strong first impression — a lively university environment with plenty of open space.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">18:00</div>
+      <div class="tl-body">
+        <h3>Opening ceremony — auditorium</h3>
+        <p>All participants gathered at the designated meeting point and were escorted to the main auditorium. The programme opened with introductions from the organising staff, participating lecturers, the director of HELMo, and representatives from the companies presenting their challenges. The lineup included large corporations such as Siemens as well as smaller start-ups of just two people — a range that underlined the diversity of the challenges on offer.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">19:30</div>
+      <div class="tl-body">
+        <h3>Hackathon space & dinner</h3>
+        <p>Following the presentations, we were taken on a tour of the working space where the hackathon would take place over the coming days. Dinner was served on site, giving us a first chance to mingle with the other participants in a relaxed setting.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">20:30</div>
+      <div class="tl-body">
+        <h3>Team formation</h3>
+        <p>After dinner, we were introduced to the other participants who would be joining our group. Teams were formed, and we quickly began establishing connections with our new colleagues from different backgrounds and institutions.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">21:00</div>
+      <div class="tl-body">
+        <h3>Outdoor team-building activity</h3>
+        <p>We moved outside for an icebreaker challenge: every team member was blindfolded and, together, we had to form various shapes using only a rope. The exercise was simultaneously absurd and effective — it required clear communication, trust, and a fair amount of patience. A memorable start to what would become a strong team dynamic.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">21:45</div>
+      <div class="tl-body">
+        <h3>First strategy session</h3>
+        <p>Once back inside, our team held its first proper working session. We discussed our assigned challenge in depth, defined individual roles, conducted an initial brainstorming exercise, and agreed on a clear action plan for Day 2. The energy was high despite the long day.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">Late</div>
+      <div class="tl-body">
+        <h3>Return to Bruges</h3>
+        <p>Exhausted but motivated, we caught the last train back to Bruges. The journey home was quiet — most of us were already thinking about the work ahead. We arrived ready to rest and recharge for what promised to be an intense Day 2.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tag-row">
+    <span class="tag">Day 1</span>
+    <span class="tag">Liège</span>
+    <span class="tag">HELMo</span>
+    <span class="tag">Opening ceremony</span>
+    <span class="tag">Team building</span>
+    <span class="tag">Siemens</span>
+  </div>
+
+</div>
+
+<footer>
+  <p>International Project · Howest × HELMo · Made with ❤️ · Hosted on GitHub Pages</p>
+</footer>
+
+</body>
+</html>
